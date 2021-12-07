@@ -31,6 +31,7 @@ namespace Webservice
         }
         //SQL insert update delete 
         //**end
+        //查询SQL返回dataset
         public static DataSet QueryDataSet(string sql,params SqlParameter[] pms)
         {
             DataSet ds = new DataSet();
@@ -46,7 +47,8 @@ namespace Webservice
                   
 
             }
-        }//返回dataset
+        }//end返回dataset
+        //查询SQL返回datatable 传入当前页码,显示几行
         public static DataTable pageSQL(string sql,params SqlParameter[] pms)
         {
             using(SqlDataAdapter adapter=new SqlDataAdapter(sql, connstr))
@@ -56,6 +58,6 @@ namespace Webservice
                 adapter.Fill(dt);
                 return dt;
             }
-        }
+        }//查询SQL返回datatable 传入当前页码,显示几行
     }
 }
