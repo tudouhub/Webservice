@@ -74,7 +74,7 @@ namespace Webservice
         [WebMethod]
         public DataTable PageSQL(int pageIndex,int pageNumber)
         {
-            string sql = "selec * from (select * from (select row_number()over(oder by ID)as RowID,* from employee )as a where a.RowID between (@pageIndex-1)*@pageNumber+1 and @pageIndex*@pageNumber ";
+            string sql = "selec * from (select * from (select row_number()over(order by ID)as RowID,* from employee )as a where a.RowID between (@pageIndex-1)*@pageNumber+1 and @pageIndex*@pageNumber ";
             SqlParameter[] pms = new SqlParameter[]
             {
                new SqlParameter("@pageIndex",System.Data.SqlDbType.Int){Value=pageIndex },
@@ -82,6 +82,7 @@ namespace Webservice
            };
             DataTable dt = SQLhelper.pageSQL(sql, pms);
             return dt;
-        }
+        }//end SQL分页
+
     }
 }
